@@ -1898,7 +1898,7 @@
     {
       "id": "ZW095C",
       "name": {
-        "en": "Home Energy Meter"
+        "en": "Home Energy Meter Gen2"
       },
       "zwave": {
         "manufacturerId": [
@@ -1908,8 +1908,7 @@
           2
         ],
         "productId": [
-          28,
-          95
+          28
         ],
         "learnmode": {
           "instruction": {
@@ -1930,34 +1929,6 @@
             ],
             "name": {
               "en": "Clamp 01"
-            },
-            "icon": "/drivers/ZW095C/assets/icon.svg",
-            "settings": []
-          },
-          "2": {
-            "class": "sensor",
-            "capabilities": [
-              "measure_power",
-              "meter_power",
-              "measure_voltage",
-              "measure_current"
-            ],
-            "name": {
-              "en": "Clamp 02"
-            },
-            "icon": "/drivers/ZW095C/assets/icon.svg",
-            "settings": []
-          },
-          "3": {
-            "class": "sensor",
-            "capabilities": [
-              "measure_power",
-              "meter_power",
-              "measure_voltage",
-              "measure_current"
-            ],
-            "name": {
-              "en": "Clamp 03"
             },
             "icon": "/drivers/ZW095C/assets/icon.svg",
             "settings": []
@@ -2004,7 +1975,7 @@
         },
         {
           "id": 3,
-          "value": false,
+          "value": true,
           "label": {
             "en": "Enable/disable selective reporting only when power change reaches a certain threshold or percentage"
           },
@@ -2144,7 +2115,7 @@
         },
         {
           "id": 101,
-          "value": 1794,
+          "value": 2,
           "label": {
             "en": "Group 1 Reports"
           },
@@ -2156,7 +2127,7 @@
         },
         {
           "id": 102,
-          "value": 4128780,
+          "value": 12,
           "label": {
             "en": "Group 2 Reports"
           },
@@ -2168,7 +2139,7 @@
         },
         {
           "id": 103,
-          "value": 14337,
+          "value": 1,
           "label": {
             "en": "Group 3 Reports"
           },
@@ -2180,7 +2151,7 @@
         },
         {
           "id": 111,
-          "value": 15,
+          "value": 300,
           "label": {
             "en": "Set the interval time of sending report."
           },
@@ -2192,7 +2163,7 @@
         },
         {
           "id": 112,
-          "value": 60,
+          "value": 300,
           "label": {
             "en": "Set the interval time of sending report."
           },
@@ -5216,24 +5187,6 @@
                 }
               }
             ]
-          }
-        ]
-      },
-      {
-        "id": "ZW095C_reset_meter",
-        "title": {
-          "en": "Reset meter values",
-          "nl": "Meter waarden resetten"
-        },
-        "hint": {
-          "en": "Reset the accumulated power usage (kWh). Can not be reversed.",
-          "nl": "Reset de stroomverbruik (kWh) waarden. Kan niet ongedaan worden gemaakt."
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "filter": "driver_id=ZW095C"
           }
         ]
       },
