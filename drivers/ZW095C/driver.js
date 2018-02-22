@@ -3,7 +3,7 @@
 const path = require('path');
 const ZwaveDriver = require('homey-zwavedriver');
 
-// http://products.z-wavealliance.org/ProductManual/File?folder=&filename=Manuals/1425/Aeon%20Labs%20Smart%20Switch%206%20manual%20(2)%20.pdf
+// https://products.z-wavealliance.org/products/2046
 
 module.exports = new ZwaveDriver(path.basename(__dirname), {
   debug: false,
@@ -191,4 +191,23 @@ module.exports = new ZwaveDriver(path.basename(__dirname), {
       size: 4
     },
   },
+});
+
+Homey.manager('flow').on('action.ZW095C_reset_meter', (callback, args) => {
+	const node = module.exports.nodes[args.device.token];
+
+	if (node &&
+		node.instance &&
+		node.instance.CommandClass &&
+		node.instance.CommandClass.COMMAND_CLASS_METER) {
+		node.instance.CommandClass.COMMAND_CLASS_METER.METER_RESET({}, (err, result) => {
+			if (err) return callback(err);
+
+			// If properly transmitted, change the setting and finish flow card
+			if (result === 'TRANSMIT_COMPLETE_OK') {
+				return callback(null, true);
+			}
+			return callback('unknown_response');
+		});
+	} else return callback('unknown_error');
 });
